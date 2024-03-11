@@ -1,0 +1,20 @@
+#!/bin/bash
+
+path=$2
+exp=$1
+
+echo 
+
+#for file in $(find . -type f -name "$path")
+#awk -v variable="$variable" 'tolower($0) ~ /variable/ { print $0 }' shakespeare.txt
+
+#lower=$(echo "$exp" | tr '[:upper:]' '[:lower:]')
+
+find . -type f -name "$path" -print0 | while read -d $'\0' file
+do
+    LC_CTYPE=C sed 's/\r//g' "$file" | 
+        awk -v RS='' -v ORS='\n\n' "/$exp/" | 
+        sed '100q' | 
+        grep -E --color "${exp}|$" && 
+        echo "^^^^^^^ $file ^^^^^^^" && echo && echo
+done
