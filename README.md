@@ -10,3 +10,5 @@ paragraph [string] [path]
 If you put the path in quotes (for example "*.txt") it will search recursively through subdirectories.
 
 Should also highlight matching word.
+
+you need grep, sed, and gawk (gnu awk not the regular one)
