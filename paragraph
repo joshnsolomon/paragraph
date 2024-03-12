@@ -1,7 +1,7 @@
 #!/bin/bash
 
 path=$2
-exp=$1
+phrase=$1
 
 echo 
 
@@ -13,8 +13,7 @@ echo
 find . -type f -name "$path" -print0 | while read -d $'\0' file
 do
     LC_CTYPE=C sed 's/\r//g' "$file" | 
-        awk -v RS='' -v ORS='\n\n' "/$exp/" | 
-        sed '100q' | 
-        grep -E --color "${exp}|$" && 
+        gawk -v RS='' -v ORS='\n\n' -v IGNORECASE=1 "/${phrase}/" | 
+        grep -i -E --color "${phrase}|$" && 
         echo "^^^^^^^ $file ^^^^^^^" && echo && echo
 done
