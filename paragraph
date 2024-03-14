@@ -1,11 +1,10 @@
 #!/bin/bash
 
-path=$2
 phrase=$1
 
 echo 
 
-find . -type f -name "$path" -print0 | while read -d $'\0' file
+find . -type f -name "*.txt" -print0 | while read -d $'\0' file
 do
     LC_CTYPE=C sed 's/\r//g' "$file" | 
         gawk -v RS='' -v ORS='\n\n' -v IGNORECASE=1 "/${phrase}/" | 
