@@ -1,13 +1,13 @@
 # paragraph
 ___________
 
-Prints matched string inside file, but returns the entire paragraph instead of just the line.
+Prints paragraph of matched string inside a text file
 
 ```
-paragraph [string] [path]
+paragraph [string]
 ```
 
-If you put the path in quotes (for example "*.txt") it will search recursively through subdirectories.
+Tt will search recursively through subdirectories and print paragraph from any .txt file.
 
 Should also highlight matching word.
 
